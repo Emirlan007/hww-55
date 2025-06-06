@@ -5,7 +5,7 @@ import meatImage from "./assets/meat.jpeg";
 import cheeseImage from "./assets/cheese.jpeg";
 import baconImage from "./assets/bacon.jpeg";
 import saladImage from "./assets/salad.jpeg";
-import IngredientItem from "./components/IngredientItem/IngredientItem.tsx";
+import IngredientList from "./components/IngredientList/IngredientList.tsx";
 
 const App = () => {
 
@@ -92,13 +92,7 @@ const App = () => {
           <h3>Ingredients</h3>
           <div className="ingredients-items">
             <div>
-              {INGREDIENTS.map(INGRED => (
-                  <IngredientItem
-                      key={INGRED.name}
-                      ingredient={INGRED}
-                      onAdd={addIngredient}
-                  />
-              ))}
+              <IngredientList ingredients={INGREDIENTS} onAdd={addIngredient} />
             </div>
             <div style={{width:'59%', marginLeft: '10px'}}>
               {ingredients.map(ingredient => (
@@ -127,7 +121,7 @@ const App = () => {
             {buildBurger()}
             <div className="BreadBottom"></div>
           </div>
-          <p><b>Total price:</b> {total}</p>
+          <p><b>Price:</b> {total}</p>
         </div>
 
       </div>
