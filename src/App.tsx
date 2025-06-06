@@ -6,6 +6,7 @@ import cheeseImage from "./assets/cheese.jpeg";
 import baconImage from "./assets/bacon.jpeg";
 import saladImage from "./assets/salad.jpeg";
 import IngredientList from "./components/IngredientList/IngredientList.tsx";
+import SelectedIngredients from "./components/SelectedIngredients/SelectedIngredients.tsx";
 
 const App = () => {
 
@@ -70,6 +71,7 @@ const App = () => {
     );
   };
 
+
   let total = 30;
 
   if (ingredients.length > 0 && INGREDIENTS.length > 0) {
@@ -80,10 +82,9 @@ const App = () => {
         }
       })
       return acc;
-    }, 30)
+    }, 30);
   }
 
-  
   return (
     <>
       <div className="container">
@@ -95,18 +96,7 @@ const App = () => {
               <IngredientList ingredients={INGREDIENTS} onAdd={addIngredient} />
             </div>
             <div style={{width:'59%', marginLeft: '10px'}}>
-              {ingredients.map(ingredient => (
-                  <div key={ingredient.name}
-                       style={{display: 'flex',
-                         justifyContent: 'space-between',
-                         alignItems: 'center',
-                         marginBottom: '10px'}}
-                  >
-                    <p><b style={{marginRight: '10px'}}>{ingredient.name}</b> x {ingredient.count}</p>
-                    {ingredient.count > 0 ? <button className="remove-btn" onClick={() =>deleteIngredient(ingredient.name)}>Remove</button> : null}
-
-                  </div>
-              ))}
+              <SelectedIngredients ingredients={ingredients} onDelete={deleteIngredient}/>
             </div>
           </div>
         </div>
@@ -125,9 +115,8 @@ const App = () => {
         </div>
 
       </div>
-
     </>
   )
 };
 
-export default App
+export default App;
