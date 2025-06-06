@@ -5,6 +5,7 @@ import meatImage from "./assets/meat.jpeg";
 import cheeseImage from "./assets/cheese.jpeg";
 import baconImage from "./assets/bacon.jpeg";
 import saladImage from "./assets/salad.jpeg";
+import IngredientItem from "./components/IngredientItem/IngredientItem.tsx";
 
 const App = () => {
 
@@ -29,7 +30,7 @@ const App = () => {
           return {
             ...ingred,
             count: ingred.count + 1,
-          }
+          };
         }
         return ingred;
       });
@@ -43,12 +44,12 @@ const App = () => {
           return {
             ...ingred,
             count: ingred.count - 1,
-          }
+          };
         }
         return ingred;
       });
     });
-  }
+  };
 
   const buildBurger = () => {
     const burgerComponents: string[] = [];
@@ -59,7 +60,7 @@ const App = () => {
           burgerComponents.push(ingredient.name)
         }
       }
-    })
+    });
     return (
         <>
           {burgerComponents.map((burgerItem, i) => (
@@ -92,17 +93,11 @@ const App = () => {
           <div className="ingredients-items">
             <div>
               {INGREDIENTS.map(INGRED => (
-                  <div key={INGRED.name} className="ingredient">
-                    <button className="btn-ing"
-                            onClick={() => addIngredient(INGRED.name)}
-                    >
-                      <img className="ingredient-image"
-                           src={INGRED.image}
-                           alt={INGRED.name}/>
-                      <span className="price">({INGRED.price} som)</span>
-                    </button>
-
-                  </div>
+                  <IngredientItem
+                      key={INGRED.name}
+                      ingredient={INGRED}
+                      onAdd={addIngredient}
+                  />
               ))}
             </div>
             <div style={{width:'59%', marginLeft: '10px'}}>
