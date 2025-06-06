@@ -50,6 +50,38 @@ const App = () => {
     });
   }
 
+  const buildBurger = () => {
+    const burgerComponents: string[] = [];
+
+    ingredients.forEach(ingredient => {
+      if (ingredient.count > 0 ) {
+        for (let i = 0; i < ingredient.count; i++) {
+          burgerComponents.push(ingredient.name)
+        }
+      }
+    })
+    return (
+        <>
+          {burgerComponents.map((burgerItem, i) => (
+            <div key={burgerItem + i} className={burgerItem}></div>
+          ))}
+        </>
+    );
+  };
+
+  let total = 30;
+
+  if (ingredients.length > 0 && INGREDIENTS.length > 0) {
+    total = INGREDIENTS.reduce((acc, ING) => {
+      ingredients.forEach(ing => {
+        if (ing.name === ING.name) {
+          acc = acc + ing.count * ING.price;
+        }
+      })
+      return acc;
+    }, 30)
+  }
+
   
   return (
     <>
@@ -97,10 +129,10 @@ const App = () => {
               <div className="Seeds1"></div>
               <div className="Seeds2"></div>
             </div>
-
+            {buildBurger()}
             <div className="BreadBottom"></div>
           </div>
-          <p><b>Price</b> {}</p>
+          <p><b>Total price:</b> {total}</p>
         </div>
 
       </div>
