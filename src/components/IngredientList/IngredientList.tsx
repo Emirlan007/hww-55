@@ -17,7 +17,7 @@ const IngredientList: React.FC<IngredientListProps> = ({ ingredients, onAdd }) =
                 />
             ))}
         </>
-    )
-}
+    );
+};
 
-export default IngredientList
+export default IngredientList;

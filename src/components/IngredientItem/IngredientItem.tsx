@@ -18,8 +18,8 @@ const IngredientItem: React.FC<IngredientItemProps> = ({ ingredient, onAdd }) =>
                 <span className="price">({ingredient.price} som)</span>
             </button>
         </div>
-    )
+    );
 
-}
+};
 
 export default IngredientItem;
